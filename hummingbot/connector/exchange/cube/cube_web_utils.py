@@ -1,8 +1,8 @@
 from typing import Any, Callable, Dict, Optional
 
 import hummingbot.connector.exchange.cube.cube_constants as CONSTANTS
-from hummingbot.connector.time_synchronizer import TimeSynchronizer
-from hummingbot.connector.utils import TimeSynchronizerRESTPreProcessor
+# from hummingbot.connector.time_synchronizer import TimeSynchronizer
+# from hummingbot.connector.utils import TimeSynchronizerRESTPreProcess/or
 from hummingbot.core.api_throttler.async_throttler import AsyncThrottler
 from hummingbot.core.web_assistant.auth import AuthBase
 from hummingbot.core.web_assistant.connections.data_types import RESTMethod, RESTRequest
@@ -107,18 +107,18 @@ async def api_request(path: str,
         return await response.json()
 
 
-async def get_current_server_time(
-        throttler: Optional[AsyncThrottler] = None,
-        domain: str = CONSTANTS.DEFAULT_DOMAIN,
-) -> float:
-    throttler = throttler or create_throttler()
-    api_factory = build_api_factory_without_time_synchronizer_pre_processor(throttler=throttler)
-    response = await api_request(
-        path=CONSTANTS.SERVER_TIME_PATH_URL,
-        api_factory=api_factory,
-        throttler=throttler,
-        domain=domain,
-        method=RESTMethod.GET)
-    server_time = response["result"]["serverTime"]
+# async def get_current_server_time(
+#         throttler: Optional[AsyncThrottler] = None,
+#         domain: str = CONSTANTS.DEFAULT_DOMAIN,
+# ) -> float:
+#     throttler = throttler or create_throttler()
+#     api_factory = build_api_factory_without_time_synchronizer_pre_processor(throttler=throttler)
+#     response = await api_request(
+#         path=CONSTANTS.SERVER_TIME_PATH_URL,
+#         api_factory=api_factory,
+#         throttler=throttler,
+#         domain=domain,
+#         method=RESTMethod.GET)
+#     server_time = response["result"]["serverTime"]
 
-    return server_time
+#     return server_time

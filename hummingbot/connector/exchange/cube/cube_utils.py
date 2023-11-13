@@ -7,7 +7,7 @@ from hummingbot.client.config.config_data_types import BaseConnectorConfigMap, C
 from hummingbot.core.data_type.trade_fee import TradeFeeSchema
 
 CENTRALIZED = True
-EXAMPLE_PAIR = "BTC-USDT"
+EXAMPLE_PAIR = "ETH-BTC"
 DEFAULT_FEES = TradeFeeSchema(
     maker_percent_fee_decimal=Decimal("0.001"),
     taker_percent_fee_decimal=Decimal("0.001"),
@@ -28,7 +28,7 @@ class CubeConfigMap(BaseConnectorConfigMap):
     cube_api_key: SecretStr = Field(
         default=...,
         client_data=ClientFieldData(
-            prompt=lambda cm: "Enter your Cube API key",
+            prompt=lambda cm: "Enter your Cube Exchange API key",
             is_secure=True,
             is_connect_key=True,
             prompt_on_new=True,
@@ -37,7 +37,7 @@ class CubeConfigMap(BaseConnectorConfigMap):
     cube_api_secret: SecretStr = Field(
         default=...,
         client_data=ClientFieldData(
-            prompt=lambda cm: "Enter your Cube API secret",
+            prompt=lambda cm: "Enter your Cube Exchange API secret",
             is_secure=True,
             is_connect_key=True,
             prompt_on_new=True,
@@ -52,7 +52,7 @@ KEYS = CubeConfigMap.construct()
 
 OTHER_DOMAINS = ["cube_testnet"]
 OTHER_DOMAINS_PARAMETER = {"cube_testnet": "cube_testnet"}
-OTHER_DOMAINS_EXAMPLE_PAIR = {"cube_testnet": "BTC-USDT"}
+OTHER_DOMAINS_EXAMPLE_PAIR = {"cube_testnet": "ETH-BTC"}
 OTHER_DOMAINS_DEFAULT_FEES = {"cube_testnet": DEFAULT_FEES}
 
 
@@ -61,7 +61,7 @@ class CubeTestnetConfigMap(BaseConnectorConfigMap):
     cube_testnet_api_key: SecretStr = Field(
         default=...,
         client_data=ClientFieldData(
-            prompt=lambda cm: "Enter your Cube Testnet API Key",
+            prompt=lambda cm: "Enter your Cube Exchange Testnet API Key",
             is_secure=True,
             is_connect_key=True,
             prompt_on_new=True,
@@ -70,7 +70,7 @@ class CubeTestnetConfigMap(BaseConnectorConfigMap):
     cube_testnet_api_secret: SecretStr = Field(
         default=...,
         client_data=ClientFieldData(
-            prompt=lambda cm: "Enter your Cube Testnet API secret",
+            prompt=lambda cm: "Enter your Cube Exchange Testnet API secret",
             is_secure=True,
             is_connect_key=True,
             prompt_on_new=True,

@@ -3,7 +3,7 @@ from hummingbot.core.data_type.in_flight_order import OrderState
 
 DEFAULT_DOMAIN = "cube_main"
 
-HBOT_ORDER_ID_PREFIX = "BYBIT-"
+HBOT_ORDER_ID_PREFIX = "CUBE-"
 MAX_ORDER_ID_LEN = 32
 HBOT_BROKER_ID = "Hummingbot"
 
@@ -12,14 +12,14 @@ SIDE_SELL = "SELL"
 
 TIME_IN_FORCE_GTC = "GTC"
 # Base URL
-REST_URLS = {"cube_main": "https://api.cube.com",
-             "cube_testnet": "https://api-testnet.cube.com"}
+REST_URLS = {"cube_main": "https://api.cube.exchange",
+             "cube_testnet": "https://dev.cube.exchange"}
 
-WSS_V1_PUBLIC_URL = {"cube_main": "wss://stream.cube.com/spot/quote/ws/v1",
-                     "cube_testnet": "wss://stream-testnet.cube.com/spot/quote/ws/v1"}
+WSS_V1_PUBLIC_URL = {"cube_main": "wss://api.cube.exchange/spot/quote/ws/v1",
+                     "cube_testnet": "wss://dev.cube.exchange/spot/quote/ws/v1"}
 
 WSS_PRIVATE_URL = {"cube_main": "wss://stream.cube.com/spot/ws",
-                   "cube_testnet": "wss://stream-testnet.cube.com/spot/ws"}
+                   "cube_testnet": "wss://dev.cube.exchange/spot/ws"}
 
 # Websocket event types
 DIFF_EVENT_TYPE = "diffDepth"
