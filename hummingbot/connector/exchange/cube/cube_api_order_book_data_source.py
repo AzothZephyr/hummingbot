@@ -15,12 +15,15 @@ from hummingbot.core.web_assistant.web_assistants_factory import WebAssistantsFa
 from hummingbot.core.web_assistant.ws_assistant import WSAssistant
 from hummingbot.logger import HummingbotLogger
 
+import hummingbot.connector.exchange.cube.protos.trade_pb2 as proto_trade
+import hummingbot.connector.exchange.cube.protos.market_data_pb2 as proto_market_data
+
 if TYPE_CHECKING:
     from hummingbot.connector.exchange.cube.cube_exchange import CubeExchange
 
 
 class CubeAPIOrderBookDataSource(OrderBookTrackerDataSource):
-    HEARTBEAT_TIME_INTERVAL = 30.0
+    HEARTBEAT_TIME_INTERVAL = 29.0 # heartbeat is expected every 30 secs
     TRADE_STREAM_ID = 1
     DIFF_STREAM_ID = 2
     ONE_HOUR = 60 * 60
@@ -135,6 +138,7 @@ class CubeAPIOrderBookDataSource(OrderBookTrackerDataSource):
                             self._time() - self._last_ws_message_sent_timestamp))
                         await asyncio.wait_for(self._process_ws_messages(ws=ws), timeout=seconds_until_next_ping)
                     except asyncio.TimeoutError:
+                        # HEARTBEAT SENT HERE
                         ping_time = self._time()
                         payload = {
                             "ping": int(ping_time * 1e3)
